@@ -23,10 +23,11 @@ function synchronizeVideos() {
   const timeDifference = extraVideo.currentTime - mainVideo.currentTime;
 
   // Add an event listener to the timeupdate event of the main video
-  //mainVideo.addEventListener('timeupdate', () => {
+  mainVideo.addEventListener('timeupdate', () => {
     // Update the time of the extra video to keep them in sync
-  //  extraVideo.currentTime = mainVideo.currentTime + timeDifference;
-  //});
+    if(mainVideo.paused)
+      extraVideo.currentTime = mainVideo.currentTime + timeDifference;
+  });
 }
 
 // Add event listeners to handle play and pause actions for both videos
