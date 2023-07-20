@@ -66,7 +66,7 @@ function synchronizeVideos() {
   // Add an event listener to the timeupdate event of the main video
   mainV.addEventListener('timeupdate', () => {
     // Update the time of the extra video to keep them in sync
-    if(mainV.paused)
+    if(mainV.paused && isSynced)
       extraVideo.currentTime = mainV.currentTime + timeDifference;
   });
 }
