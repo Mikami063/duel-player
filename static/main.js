@@ -1,3 +1,4 @@
+
 // Get references to the video elements and the lock/sync button
 const mainVideo = document.getElementById('main-video');
 const youtubeMainVideo = document.getElementById('youtube-main-video');
@@ -120,5 +121,8 @@ function handleVideoSelection(event,videoType) {
 
 changeYoutubeUrlButton.addEventListener('click', () => {
   const newYouTubeUrl = youtubeUrlInput.value.trim();
-  youtubeMainVideo.setAttribute("data-yt2html5",youtubeUrlInput);
+  youtubeMainVideo.setAttribute("data-yt2html5",newYouTubeUrl);
+  new YouTubeToHtml5({
+    withAudio: true // Filter streams to those with audio channels
+  });
 });
