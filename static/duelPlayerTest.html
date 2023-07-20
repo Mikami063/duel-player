@@ -12,12 +12,16 @@
       <!-- Provide the source for the main video -->
       <source src="videos/10 MINUTE TIMER - COUNTDOWN TIMER (MINIMAL).mp4" type=video/mp4>
     </video>
+    <input type="file" id="main-video-file-input" accept="video/*" style="display:none">
+    <button id="load-main-video-button">Load Main Video</button>
   </div>
   <div class="video-container w-1/2">
     <video id="extra-video" controls class="w-full">
       <!-- Provide the source for the extra video -->
       <source src="videos/I drilled holes in my guitar and it sounds UNREAL.mp4" type=video/mp4>
     </video>
+    <input type="file" id="extra-video-file-input" accept="video/*" style="display:none">
+    <button id="load-extra-video-button">Load Extra Video</button>
   </div>
 </div>
 <button id="lock-sync-button">Lock/Sync</button>
