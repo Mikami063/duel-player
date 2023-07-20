@@ -8,12 +8,20 @@
 <body>
 <div class="duel-player flex">
   <div class="video-container w-1/2">
-    <video id="main-video" controls class="w-full">
-      <!-- Provide the source for the main video -->
-      <source src="videos/10 MINUTE TIMER - COUNTDOWN TIMER (MINIMAL).mp4" type=video/mp4>
-    </video>
-    <input type="file" id="main-video-file-input" accept="video/*" style="display:none">
-    <button id="load-main-video-button">Load Main Video</button>
+    <div id="main-video-div">
+      <video id="main-video" controls class="w-full">
+        <!-- Provide the source for the main video -->
+        <source src="videos/10 MINUTE TIMER - COUNTDOWN TIMER (MINIMAL).mp4" type=video/mp4>
+      </video>
+      <input type="file" id="main-video-file-input" accept="video/*" style="display:none">
+      <button id="load-main-video-button">Load Main Video</button>
+    </div>
+    <div id="youtube-main-video-div">
+      <video id="youtube-main-video" data-yt2html5="https://www.youtube.com/watch?v=EETV2JNBhcc" controls class="w-full"></video>
+      <input type="text" id="youtube-url-input" placeholder="Enter YouTube URL">
+      <button id="change-youtube-url-button">Change YouTube URL</button>
+    </div>    
+    <button id="toggle-videos-button">Show Youtube Video</button>
   </div>
   <div class="video-container w-1/2">
     <video id="extra-video" controls class="w-full">
@@ -27,5 +35,7 @@
 <button id="lock-sync-button">Lock/Sync</button>
 <div id="sync-status">Not Synced</div>
 <script src="main.js"></script>
+<!--script src="https://cdn.jsdelivr.net/npm/@thelevicole/youtube-to-html5-loader@5/dist/YouTubeToHtml5.js"></script-->
+<script src="YouTubeToHtml5.js"></script>
 </body>
 </html>

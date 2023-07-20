@@ -1,7 +1,16 @@
 // Get references to the video elements and the lock/sync button
 const mainVideo = document.getElementById('main-video');
+const youtubeMainVideo = document.getElementById('youtube-main-video');
 const extraVideo = document.getElementById('extra-video');
 const lockSyncButton = document.getElementById('lock-sync-button');
+const toggleVideosButton = document.getElementById('toggle-videos-button');
+
+const youtubeUrlInput = document.getElementById('youtube-url-input');
+const changeYoutubeUrlButton = document.getElementById('change-youtube-url-button');
+
+
+const mainVideoDiv= document.getElementById('main-video-div');
+const youtubeMainVideoDiv= document.getElementById('youtube-main-video-div');
 
 const mainFileInput = document.getElementById('main-video-file-input');
 const extraFileInput = document.getElementById('extra-video-file-input');
@@ -9,6 +18,29 @@ const loadMainVideosButton = document.getElementById('load-main-video-button');
 const loadExtraVideosButton = document.getElementById('load-extra-video-button');
 
 let isSynced = false
+
+// Initially hide the YouTube video
+youtubeMainVideoDiv.style.display = 'none';
+
+// Add an event listener to the toggle button
+toggleVideosButton.addEventListener('click', () => {
+  // Check the current visibility of the main video
+  const isMainVideoVisible = mainVideoDiv.style.display !== 'none';
+
+  // Toggle the visibility of the videos
+  if (isMainVideoVisible) {
+    mainVideoDiv.style.display = 'none';
+    youtubeMainVideoDiv.style.display = 'block';
+    toggleVideosButton.textContent = 'Show Local Video';
+  } else {
+    mainVideoDiv.style.display = 'block';
+    youtubeMainVideoDiv.style.display = 'none';
+    toggleVideosButton.textContent = 'Show Youtube Video';
+  }
+});
+
+
+
 
 // Add an event listener to the lock/sync button
 lockSyncButton.addEventListener('click', () => {
@@ -86,4 +118,7 @@ function handleVideoSelection(event,videoType) {
   showSyncState();//may need change for better notify way
 }
 
-
+changeYoutubeUrlButton.addEventListener('click', () => {
+  const newYouTubeUrl = youtubeUrlInput.value.trim();
+  youtubeMainVideo.setAttribute("data-yt2html5",youtubeUrlInput);
+});
