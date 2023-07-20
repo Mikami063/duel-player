@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="duel-player flex">
+  <div class="video-container w-1/2">
+    <video id="main-video" controls class="w-full">
+      <!-- Provide the source for the main video -->
+      <source src="videos/10 MINUTE TIMER - COUNTDOWN TIMER (MINIMAL).mp4" type=video/mp4>
+    </video>
+  </div>
+  <div class="video-container w-1/2">
+    <video id="extra-video" controls class="w-full">
+      <!-- Provide the source for the extra video -->
+      <source src="videos/I drilled holes in my guitar and it sounds UNREAL.mp4" type=video/mp4>
+    </video>
+  </div>
+</div>
+<button id="lock-sync-button">Lock/Sync</button>
+<div id="sync-status">Not Synced</div>
+<script src="main.js"></script>
+</body>
+</html>
