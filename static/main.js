@@ -19,6 +19,7 @@ const loadMainVideosButton = document.getElementById('load-main-video-button');
 const loadExtraVideosButton = document.getElementById('load-extra-video-button');
 
 let isSynced = false
+let mainV=mainVideo
 
 // Initially hide the YouTube video
 youtubeMainVideoDiv.style.display = 'none';
@@ -32,10 +33,12 @@ toggleVideosButton.addEventListener('click', () => {
   if (isMainVideoVisible) {
     mainVideoDiv.style.display = 'none';
     youtubeMainVideoDiv.style.display = 'block';
+    mainV=youtubeMainVideo;
     toggleVideosButton.textContent = 'Show Local Video';
   } else {
     mainVideoDiv.style.display = 'block';
     youtubeMainVideoDiv.style.display = 'none';
+    mainV=mainVideo;
     toggleVideosButton.textContent = 'Show Youtube Video';
   }
 });
@@ -58,13 +61,13 @@ lockSyncButton.addEventListener('click', () => {
 // Function to synchronize the videos
 function synchronizeVideos() {
   // Get the time difference between the main and extra video
-  const timeDifference = extraVideo.currentTime - mainVideo.currentTime;
+  const timeDifference = extraVideo.currentTime - mainV.currentTime;
 
   // Add an event listener to the timeupdate event of the main video
-  mainVideo.addEventListener('timeupdate', () => {
+  mainV.addEventListener('timeupdate', () => {
     // Update the time of the extra video to keep them in sync
-    if(mainVideo.paused)
-      extraVideo.currentTime = mainVideo.currentTime + timeDifference;
+    if(mainV.paused)
+      extraVideo.currentTime = mainV.currentTime + timeDifference;
   });
 }
 
@@ -80,6 +83,23 @@ mainVideo.addEventListener('pause', () => {
     extraVideo.pause();
   }
 });
+
+
+// Add event listeners to handle play and pause actions for both videos
+youtubeMainVideo.addEventListener('play', () => {
+  if (isSynced) {
+    extraVideo.play();
+  }
+});
+
+youtubeMainVideo.addEventListener('pause', () => {
+  if (isSynced) {
+    extraVideo.pause();
+  }
+});
+
+
+
 
 function showSyncState() {
   const syncStatus = document.getElementById('sync-status');
